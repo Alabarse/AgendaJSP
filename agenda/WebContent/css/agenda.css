@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+section#corpo-agenda h1#Titulo {
+	color:#66bbff;
+	text-align: center;
+}
+
+.tabela {
+	margin: 15px auto 15px 400px;
+	border-collapse: collapse;
+	border: 1px double black;
+	background-color: white;
+	
+}
+
+.tabela td {
+	padding: 10px;
+	border: 1px solid black;
+}
+
+.tabela th {
+	border: 1px solid black;
+	padding: 4px;
+	background-color: #66bbff;
+}
+
+.direcionamento {
+	display: flex;
+	border: 1px solid #66bbff;
+	padding: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	margin-left: 560px;
+	margin-right: 549px;
+	margin-bottom: 10px;
+	color: black;
+	background-color: #66bbff;
+}

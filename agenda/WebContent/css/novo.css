@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+h1 {
+	text-align: center;
+	text-transform:uppercase;
+	font-family: sans-serif;
+	color: #66bbff;
+}
+
+form {
+	text-align: center;
+	border: 1px solid black;
+	margin-left: 350px;
+	margin-right: 350px;
+	margin-top: 200px;
+}
+
+table {
+	margin-left: 180px;
+	margin-bottom: 3px;
+}
+
+td {
+	width: 120px;
+	padding: 2px;
+}
+
+.Botao1 {
+	border-radius: 7px;
+	padding: 4px 8px 4px 8px;
+	margin: 4px 0px 4px 0px;
+	background-color: #66bbff;
+	font-family: sans-serif;
+	cursor:pointer;
+}
