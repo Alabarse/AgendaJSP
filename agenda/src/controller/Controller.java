@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" })
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert", "/select", "/update" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAO dao = new DAO();
@@ -30,6 +30,10 @@ public class Controller extends HttpServlet {
 			contatos(request, response);
 		} else if (action.equals("/insert")) {
 			novoContato(request, response);
+		} else if (action.equals("/select")) {
+			listarContato(request, response);
+		} else if (action.equals("/update")) {
+			editarContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -63,7 +67,44 @@ public class Controller extends HttpServlet {
 		// Invocando método inserirContato passando o objeto contato
 		dao.inserirContato(contato);
 		// Redirecionar para o documento agenda.jsp
-		
+
+		response.sendRedirect("main");
+	}
+
+	protected void listarContato(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// Recebendo ID do contato a ser editado
+		String idcon = request.getParameter("idcon");
+		contato.setIdCon(idcon);
+		System.out.println(idcon);
+		dao.selecionarContato(contato);
+		// teste de recebimento
+		System.out.println(contato.getIdCon());
+		System.out.println(contato.getNome());
+		System.out.println(contato.getFone());
+		System.out.println(contato.getEmail());
+		// Setando os atributos da classe JavaBeans na table
+
+		request.setAttribute("id", contato.getIdCon());
+		request.setAttribute("nome", contato.getNome());
+		request.setAttribute("fone", contato.getFone());
+		request.setAttribute("email", contato.getEmail());
+
+		// encaminhar dados ao documento editar.jsp
+
+		RequestDispatcher rd = request.getRequestDispatcher("editar.jsp");
+		rd.forward(request, response);
+	}
+	
+	protected void editarContato(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// teste de recebimento dos dados
+		contato.setIdCon(request.getParameter("id"));
+		contato.setNome(request.getParameter("nome"));
+		contato.setFone(request.getParameter("fone"));
+		contato.setEmail(request.getParameter("email"));
+		//
+		dao.editarContato(contato);
+		//
 		response.sendRedirect("main");
 	}
 }

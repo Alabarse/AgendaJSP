@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+table {
+	padding: 10px;
+	border:1px solid black;
+	margin-top: 200px;
+	margin-left: 500px;
+}
+
+h1 {
+	text-transform: uppercase;
+	color: #66bbff;
+	text-decoration: underline;
+}
+
+#caixaAlt {
+	background-color: #cecece;
+	width: 30px;
+}
+
+td input {
+	margin-left: 63px;
+}
+
+.Botao1 {
+	margin-left: 132px;
+	border-radius: 10px;
+	background-color: #66bbff;
+	padding: 5px 20px 5px 20px;
+	width: 140;
+}
+

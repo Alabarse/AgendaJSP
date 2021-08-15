@@ -5,8 +5,23 @@ section#corpo-agenda h1#Titulo {
 	text-align: center;
 }
 
+a {
+	text-decoration: none;
+	text-transform: uppercase;
+	color: black;
+	background-color: #66bbff;
+	border: 1px solid #66bbff;
+	padding: 4px;
+}
+
+a:hover {
+	text-decoration: underline;
+	background-color: #cecece;	
+	border-color: #cecece;
+}
+
 .tabela {
-	margin: 15px auto 15px 400px;
+	margin: 15px auto 15px 295px;
 	border-collapse: collapse;
 	border: 1px double black;
 	background-color: white;
@@ -25,7 +40,7 @@ section#corpo-agenda h1#Titulo {
 }
 
 .direcionamento {
-	display: flex;
+	display: block;
 	border: 1px solid #66bbff;
 	padding: 5px;
 	text-decoration: none;
@@ -36,4 +51,17 @@ section#corpo-agenda h1#Titulo {
 	margin-bottom: 10px;
 	color: black;
 	background-color: #66bbff;
+}
+
+#botaoExclusao {
+	background-color: red;
+	border-color: red;
+	padding: 4px;
+	font-size: 15px;
+}
+
+#botaoExclusao:hover {
+	text-decoration: underline;
+	background-color: #cecece;
+	border-color: #cecece;
 }

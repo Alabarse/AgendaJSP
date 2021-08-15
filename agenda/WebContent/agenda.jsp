@@ -3,6 +3,7 @@
     <%@ page import="model.JavaBeans"%>
     <%@ page import="java.util.ArrayList"%>
     <%
+    	@SuppressWarnings("unchecked")
     	ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contatos");
     %>
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
 					<th>NOME</th>
 					<th>FONE</th>
 					<th>E-MAIL</th>
+					<th colspan="2">Opções</th>
 				</tr>	
 			</thead>
 			<tbody>
@@ -33,10 +35,12 @@
 						<td><%=lista.get(i).getIdCon()%></td>
 						<td><%=lista.get(i).getNome()%></td>
 						<td><%=lista.get(i).getFone()%></td>
-						<td><%=lista.get(i).getEmail()%>					
+						<td><%=lista.get(i).getEmail()%></td>
+						<td><a href="select?idcon=<%=lista.get(i).getIdCon()%>">Editar</a>
+							<a href="" id="botaoExclusao" <%=lista.get(i).getIdCon()%>>Excluir</a>
+						</td>
 					</tr>
-				<% } %>
-				
+				<%} %>
 			</tbody>
 		</table>
 	</section>
