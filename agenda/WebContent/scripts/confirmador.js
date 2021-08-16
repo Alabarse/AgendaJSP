@@ -1,7 +1,9 @@
 /**
- * href="delete?idcon=<%=lista.get(i).getIdCon()%>"
+ * 
  * Confirmação de exclusão de contato
+ * 
  * @author Mateus Alabarse
+ * @param idcon
  */
 
 function confirmarExclusao(idcon) {

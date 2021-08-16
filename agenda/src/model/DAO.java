@@ -6,18 +6,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DAO.
+ */
 public class DAO {
 
-	/** Modulo de conexão **/
-	// Parametros de conexão
+	/** Modulo de conexão *. */
 
 	private String driver = "com.mysql.cj.jdbc.Driver";
+
+	/** The url. */
 	private String url = "jdbc:mysql://localhost:3306/dbagenda?useTimezone=true&serverTimezone=UTC";
+
+	/** The user. */
 	private String user = "root";
+
+	/** The password. */
 	private String password = "password";
 
-	// Metodo de conexão
-
+	/**
+	 * Conectar.
+	 *
+	 * @return the connection
+	 */
 	private Connection conectar() {
 		Connection con = null;
 		try {
@@ -33,6 +45,9 @@ public class DAO {
 
 	// Teste de conexão
 
+	/**
+	 * Texte conexao.
+	 */
 	public void texteConexao() {
 		try {
 			Connection con = conectar();
@@ -46,21 +61,21 @@ public class DAO {
 
 	/* CRUD CREATE */
 
+	/**
+	 * Inserir contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void inserirContato(JavaBeans contato) {
 		String create = "insert into contatos (nome,telefone,email) values(?,?,?)";
 		try {
 
-			// Abrindo conexão
 			Connection con = conectar();
-			// Preparar Query para inserção no banco de dados
 			PreparedStatement pst = con.prepareStatement(create);
-			// Definindo os parametros de acordo com os conteúdos do JavaBeans
 			pst.setString(1, contato.getNome());
 			pst.setString(2, contato.getFone());
 			pst.setString(3, contato.getEmail());
-			// ExecutarQuery
 			pst.executeUpdate();
-			// Encerrando conexão com o banco de dados
 			con.close();
 
 		} catch (Exception e) {
@@ -68,6 +83,11 @@ public class DAO {
 		}
 	}
 
+	/**
+	 * Listar contato.
+	 *
+	 * @return the array list
+	 */
 	/* CRUD CREATE */
 	public ArrayList<JavaBeans> listarContato() {
 		ArrayList<JavaBeans> contatos = new ArrayList<>();
@@ -78,12 +98,10 @@ public class DAO {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				// Variaveis de apoio dos dados do banco
 				String idcon = rs.getString(1);
 				String nome = rs.getString(2);
 				String fone = rs.getString(3);
 				String email = rs.getString(4);
-				// Alimentando o ArrayList
 				contatos.add(new JavaBeans(idcon, nome, fone, email));
 			}
 			con.close();
@@ -93,10 +111,14 @@ public class DAO {
 			return null;
 		}
 	}
-	
-	
+
 	/* CRUD UPDATE */
-	
+
+	/**
+	 * Selecionar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void selecionarContato(JavaBeans contato) {
 		String selecionar = "select * from contatos where idcon = ?";
 		try {
@@ -104,7 +126,7 @@ public class DAO {
 			PreparedStatement pst = con.prepareStatement(selecionar);
 			pst.setString(1, contato.getIdCon());
 			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				contato.setIdCon(rs.getString(1));
 				contato.setNome(rs.getString(2));
 				contato.setFone(rs.getString(3));
@@ -115,7 +137,12 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
-	
+
+	/**
+	 * Editar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void editarContato(JavaBeans contato) {
 		String editar = "update contatos set nome=?,telefone=?,email=? where idcon=?";
 		try {
@@ -131,7 +158,12 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
-	
+
+	/**
+	 * Deletar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void deletarContato(JavaBeans contato) {
 		String delete = "delete from contatos where idcon = ?";
 		Connection con = conectar();
@@ -143,6 +175,6 @@ public class DAO {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
+
 	}
 }
