@@ -19,6 +19,7 @@
 		<h1 id="Titulo">Agenda de contatos</h1>
 		<a href="index.html" class="direcionamento">Voltar<br></a>
 		<a href="novo.html" class="direcionamento">Novo contato</a>
+		<a href="report" id="relatorio">Relatório</a>
 		<table class="tabela">
 			<thead>
 				<tr>
@@ -37,12 +38,13 @@
 						<td><%=lista.get(i).getFone()%></td>
 						<td><%=lista.get(i).getEmail()%></td>
 						<td><a href="select?idcon=<%=lista.get(i).getIdCon()%>">Editar</a>
-							<a href="" id="botaoExclusao" <%=lista.get(i).getIdCon()%>>Excluir</a>
+							<a href="javascript: confirmarExclusao(<%=lista.get(i).getIdCon()%>)" id="botaoExclusao">Excluir</a>
 						</td>
 					</tr>
 				<%} %>
 			</tbody>
 		</table>
+		<script src="scripts/confirmador.js"></script>
 	</section>
 </body>
 </html>

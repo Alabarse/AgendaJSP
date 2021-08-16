@@ -131,4 +131,18 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
+	
+	public void deletarContato(JavaBeans contato) {
+		String delete = "delete from contatos where idcon = ?";
+		Connection con = conectar();
+		try {
+			PreparedStatement pst = con.prepareStatement(delete);
+			pst.setString(1, contato.getIdCon());
+			pst.executeUpdate();
+			con.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
 }
